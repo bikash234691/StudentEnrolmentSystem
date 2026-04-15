@@ -153,8 +153,12 @@ class App:
         email.pack()
 
         def save():
+            if not sid.get() or not name.get() or not email.get():
+                messagebox.showerror("Error", "All fields are required!")
+                return
             self.students.append(Student(sid.get(), name.get(), email.get()))
             messagebox.showinfo("Success", "Student Added Successfully")
+
 
         tk.Button(self.root, text="Save", command=save).pack(pady=10)
         tk.Button(self.root, text="Back", command=self.main_menu).pack()
