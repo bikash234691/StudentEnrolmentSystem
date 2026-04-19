@@ -185,8 +185,13 @@ class App:
         cap.pack()
 
         def save():
+            if not cap.get().isdigit():
+                messagebox.showerror("Invalid Input", "CApacity must be a number.")
+                return
+            
             self.courses.append(Course(code.get(), name.get(), cap.get()))
             messagebox.showinfo("Success", "Course Added Successfully")
+
 
         tk.Button(self.root, text="Save", command=save).pack(pady=10)
         tk.Button(self.root, text="Back", command=self.main_menu).pack()
